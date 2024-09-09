@@ -1,0 +1,2 @@
+ls -p | grep -v '/$' | grep -v '^\.' | tr '\n' ',' | sed 's/,$/\n/'
+
