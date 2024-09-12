@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Page</title>
+    <style>
+       body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+        }
+        .title {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            font-size: 2em;
+        }
+        .image-container {
+            margin-top: 60px; /* Adjust to control space between title and images */
+            display: flex;
+            gap: 20px;
+        }
+        .image-container img {
+            width: 300px; /* Adjust the width as needed */
+            height: 400px;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Piscine Web</div>
+    <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdk7f7dKcG0Of6evjiLd7v-O2o2Y5XlJ15kQ&s" alt="Image 1">
+            <img src="https://static.wikia.nocookie.net/p__/images/a/af/MugmanTCS.png/revision/latest?cb=20220713185008&path-prefix=protagonist" alt="Image 2">
+    </div>
+</body>
+</html>
