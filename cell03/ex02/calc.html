@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        input, select {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <form id="calculator">
+        <input type="number" id="left" min="0" placeholder="Left operand">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="number" id="right" min="0" placeholder="Right operand">
+        <button type="button" onclick="calculate()">Try me!</button>
+    </form>
+    <script>
+        function calculate() {
+            const leftValue = parseInt(document.getElementById('left').value);
+            const rightValue = parseInt(document.getElementById('right').value);
+            const operator = document.getElementById('operator').value;
+
+            if (isNaN(leftValue) || isNaN(rightValue) || leftValue < 0 || rightValue < 0) {
+                alert('Error :(');
+                return;
+            }
+
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result = leftValue + rightValue;
+                    break;
+                case '-':
+                    result = leftValue - rightValue;
+                    break;
+                case '*':
+                    result = leftValue * rightValue;
+                    break;
+                case '/':
+                    if (rightValue === 0) {
+                        alert("It’s over 9000!");
+                        console.log("It’s over 9000!");
+                        return;
+                    }
+                    result = leftValue / rightValue;
+                    break;
+                case '%':
+                    if (rightValue === 0) {
+                        alert("It’s over 9000!");
+                        console.log("It’s over 9000!");
+                        return;
+                    }
+                    result = leftValue % rightValue;
+                    break;
+                default:
+                    alert('Error :(');
+                    return;
+            }
+
+            alert(`Result: ${result}`);
+            console.log(result);
+        }
+
+        // Show alert every 30 seconds
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+    </script>
+</body>
+</html>

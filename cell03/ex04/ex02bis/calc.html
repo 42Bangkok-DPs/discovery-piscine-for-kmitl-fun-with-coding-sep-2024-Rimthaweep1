@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <input type="number" id="leftOperand" min="0">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="number" id="rightOperand" min="0">
+    <button id="calculateButton">Try me!</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calculateButton').click(function() {
+                const leftOperand = parseInt($('#leftOperand').val());
+                const rightOperand = parseInt($('#rightOperand').val());
+                const operator = $('#operator').val();
+
+                if (leftOperand < 0 || rightOperand < 0) {
+                    alert('Error :(');
+                    return;
+                }
+
+                let result;
+                switch (operator) {
+                    case '+':
+                        result = leftOperand + rightOperand;
+                        break;
+                    case '-':
+                        result = leftOperand - rightOperand;
+                        break;
+                    case '*':
+                        result = leftOperand * rightOperand;
+                        break;
+                    case '/':
+                        if (rightOperand === 0) {
+                            alert("It's over 9000!");
+                            return;
+                        }
+                        result = leftOperand / rightOperand;
+                        break;
+                    case '%':
+                        if (rightOperand === 0) {
+                            alert("It's over 9000!");
+                            return;
+                        }
+                        result = leftOperand % rightOperand;
+                        break;
+                }
+
+                alert('Result: ' + result);
+                console.log('Result: ' + result);
+            });
+
+            setInterval(function() {
+                alert('Please, use me...');
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
