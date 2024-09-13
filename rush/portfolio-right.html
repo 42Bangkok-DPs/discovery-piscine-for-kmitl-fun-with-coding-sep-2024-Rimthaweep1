@@ -3,55 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>tthanapa's Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+        body, html {
+            height: 100%;
             margin: 0;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-family: 'Roboto', sans-serif;
         }
+
+        /* Navbar */
         .navbar {
-            background-color: #007bff;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
         }
         .navbar-brand, .nav-link {
             color: #fff !important;
         }
-        .navbar-nav .nav-link:hover {
+        .nav-link:hover {
             color: #f0f0f0 !important;
         }
-        .jumbotron {
-            background-color: #007bff;
-            color: #fff;
-            padding: 4rem 0;
-            text-align: center;
+
+        /* Fullpage sections */
+        section {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
-        .jumbotron h1 {
-            font-size: 3rem;
+
+        /* Welcome Section */
+        #welcome {
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        #welcome iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #welcome .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #welcome h1 {
+            font-size: 4rem;
             margin-bottom: 1rem;
         }
-        .jumbotron p {
-            font-size: 1.25rem;
+
+        #welcome p {
+            font-size: 1.5rem;
         }
-        .container {
-            margin-top: 3rem;
+
+        /* About Section */
+        #about {
+            background-color: #004080;
+            color: white;
         }
-        .section {
-            margin: 2rem auto;
-            padding: 2rem;
-            max-width: 960px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        #about h2 {
+            margin-bottom: 2rem;
         }
-        .section h2 {
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
+
+        #about .about-icons {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 1rem;
         }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+        }
+
+        #about h3 {
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        #about p {
+            color: #f0f0f0;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: #004d40;
+            color: black;
+        }
+
+        #projects h2 {
+            margin-bottom: 2rem;
+            color: white;
+        }
+
         .card {
             border: none;
             border-radius: 10px;
@@ -59,137 +125,205 @@
             transition: transform 0.3s ease-in-out;
             overflow: hidden;
         }
+
         .card:hover {
             transform: scale(1.05);
         }
+
         .card-img-top {
             height: 200px;
             object-fit: cover;
         }
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+
+        .card-body {
+            text-align: center;
         }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
+
+        /* Contact Section */
+
+        #contact .social-icons {
+            font-size: 2rem;
+            margin: 1rem;
+            color: white;
         }
-        .btn-primary:hover {
-            background-color: #0056b3;
+
+        #contact .social-icons:hover {
+            color: #d1d1d1;
         }
+
         footer {
-            background-color: #007bff;
+            background-color: #333;
             color: #fff;
             padding: 1rem 0;
             text-align: center;
         }
-        /* Styling for profile image */
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
+        #contact {
+            position: relative;
+            color: white;
+            text-align: center;
+            overflow: hidden;
         }
+
+        #contact .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #contact .video-background iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Home</a>
+            <a class="navbar-brand" href="index.html">Portfolio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Your gateway to understanding my work and projects</p>
-    </div>
-
+    <!-- Welcome Section -->
+    <section id="welcome">
+        <iframe src="https://www.youtube.com/embed/lTRiuFIWV54?start=16&autoplay=1&mute=1&loop=1&playlist=lTRiuFIWV54&controls=0&disablekb=1&modestbranding=1&showinfo=0&fs=0" 
+        frameborder="0" 
+        allow="autoplay; fullscreen" 
+        allowfullscreen>
+        </iframe>
+        <div class="content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Explore my work and projects</p>
+        </div>
+    </section>
+    
     <!-- About Section -->
-    <div class="">
-        <section id="" class="">
+    <section id="about">
+        <div class="container text-center">
             <h2>About Me</h2>
-            <div class="text-center">
-                <!-- Profile Image -->
-                <img src="https://scontent-bkk1-1.xx.fbcdn.net/v/t39.30808-6/400505782_3098438727130277_2229341137526401744_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=2O9gBJuP-MoQ7kNvgGP7J9w&_nc_ht=scontent-bkk1-1.xx&_nc_gid=Ah3omgv9LZgGC0EmSRuQoCE&oh=00_AYBzhU_GFRt2LlbmFYQ6cRVPVcSbXf-pRdLTjWoHgtvxRA&oe=66E8B7FD" class="profile-img" alt="Profile Picture">
-                <p><strong>Name:</strong> Thanit Thanapathomchai</p>
-                <p><strong>Age:</strong> 23 years old</p>
-                <p><strong>Education:</strong> KMITL, Faculty of Information Technology, Software Engineering</p>
-                <p>Hello! I’m a web developer with a passion for creating dynamic and user-friendly web applications. I specialize in front-end development, working with technologies such as HTML, CSS, and JavaScript. I enjoy turning complex problems into simple, intuitive solutions. Let's connect and see how we can work together!</p>
+            
+            <!-- Profile Section -->
+            <div class="text-center mt-5">
+                <img src="https://scontent-bkk1-1.xx.fbcdn.net/v/t39.30808-6/400505782_3098438727130277_2229341137526401744_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=IVxkL5GEV40Q7kNvgH5bEDK&_nc_ht=scontent-bkk1-1.xx&_nc_gid=AD09EE4aOwaHib7ck_c_rVP&oh=00_AYAGmfNISGBg3iJM5q5MNYxpKIbD6puZ44U8F9dAUHCTxA&oe=66EA097D" alt="Profile Picture" class="profile-img">
+                <h3 class="mt-2">Thanit Thanapathomchai</h3>
+                <p>A passionate Web developer and Software engineer. I love creating dynamic and responsive websites, design prototype, and solving technical challenges.</p>
             </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <h2>My Projects</h2>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <i class="fas fa-laptop-code about-icons"></i>
+                    <h4>Web Development</h4>
+                    <p>I create responsive, dynamic websites using HTML, CSS, JavaScript.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-code about-icons"></i>
+                    <h4>Software Engineer</h4>
+                    <p>Skilled in working with HTML, CSS, JavaScript, Database and Web Application.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-mobile-alt about-icons"></i>
+                    <h4>Mobile Design</h4>
+                    <p>Design mobile-friendly websites with a focus on usability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center">My Projects</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project One">
+                        <img src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/4149b572091985a9ec77c5759f9995d0~c5_720x720.jpeg?lk3s=a5d48078&nonce=83869&refresh_token=77addf314732fa1ed388ee2ebae24787&x-expires=1726401600&x-signature=M9U8%2FdwQgLFxmxqF2Lsth%2FkC7HM%3D&shp=a5d48078&shcp=81f88b70" class="card-img-top" alt="Project One">
                         <div class="card-body">
-                            <h5 class="card-title">Project One</h5>
-                            <p class="card-text">A description of my first project, highlighting its features and technologies used.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">@mylegacyidevice</h5>
+                            <p class="card-text"> features creative content focused on showcasing a unique and retro iDevice, blending nostalgia with modern technology. The videos highlight the device's distinctive features, design, and its impact on personal and technological legacy.</p>
+                            <a href="https://www.tiktok.com/@mylegacyidevice" class="btn btn-primary">Go to channel</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Two">
+                        <img src="https://ugc.production.linktr.ee/271cd514-b270-4c95-a248-540a3c8b6ed2_StayEZ-Present.png?io=true&size=thumbnail-feature-v1_0" class="card-img-top" alt="Project Two">
                         <div class="card-body">
-                            <h5 class="card-title">Project Two</h5>
-                            <p class="card-text">A description of my second project, including key accomplishments and challenges faced.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">StayEZ (In Development)</h5>
+                            <p class="card-text">StayEZ is an evolving project aimed at developing a web-based platform for finding and booking accommodation for student, specifically focusing on rental properties like dorms. The website will offer a user-friendly interface, allowing users to search for available options, compare prices, and make bookings seamlessly. The platform will also provide detailed information about each property, including amenities, reviews, and location, to help users make informed decisions.</p>
+                            <a href="https://linktr.ee/StayEZ" class="btn btn-primary">Discover More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Three">
+                        <img src="https://www.neonacademy.io/wp-content/uploads/2021/06/cover-pic-copy-scaled.jpg" class="card-img-top" alt="Project Three">
                         <div class="card-body">
-                            <h5 class="card-title">Project Three</h5>
-                            <p class="card-text">Details about my third project, showcasing its impact and the skills applied.</p>
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">Spark AR Filters</h5>
+                            <p class="card-text">I had created an Instagram filter using Spark AR that achieved over 2 million interactions. Although the filter was highly successful, Sadly it has not been updated or refreshed recently cause Spark AR Discontinued</p>
+                            <a href="#" id="funButton" class="btn btn-primary">Press F to Respect</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <div class="text-center">
-                <p>Feel free to reach out to me via the following platforms:</p>
-                <a href="#" class="btn btn-primary">Email</a>
-                <a href="#" class="btn btn-primary">LinkedIn</a>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="video-background">
+            <iframe src="https://www.youtube.com/embed/6Bvfs4ai5XU?autoplay=1&mute=1&loop=1&playlist=6Bvfs4ai5XU&controls=0&disablekb=1&modestbranding=1&showinfo=0&fs=0&rel=0&end=22"  
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+            </iframe>
+        </div>
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Reach out via social media or email:</p>
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/max.ttmp/" class="social-icons"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/maxthanit/" class="social-icons"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/thanit-thanapathomchai-856928328/" class="social-icons"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/mtn07" class="social-icons"><i class="fab fa-github"></i></a>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Thanit Thanapathomchai</p>
+        <p>&copy; 2024 Thanit Thanapathomchai (tthanapa)</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('funButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            alert("You've pressed F with honor. Respect acknowledged!");
+        });
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'f' || event.key === 'F') {
+                alert('Respect granted! F is now officially pressed.');
+            }
+        });
+    </script>
 </body>
 </html>

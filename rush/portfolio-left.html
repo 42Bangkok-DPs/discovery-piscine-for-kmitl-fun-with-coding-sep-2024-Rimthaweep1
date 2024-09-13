@@ -3,182 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Modern Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --aws-orange: #FF9900;
             --aws-squid-ink: #232F3E;
             --aws-deep-squid-ink: #161E2D;
             --aws-smile-orange: #FF9900;
+            --aws-orange: #FF9900;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--aws-squid-ink);
-            color: white;
+        body, html {
+            height: 100%;
+            margin: 0;
             scroll-behavior: smooth;
+            font-family: 'Roboto', sans-serif;
         }
-        .jumbotron {
-            background-color: var(--aws-deep-squid-ink);
-            padding: 2rem;
-            margin-bottom: 3rem;
+        .white{
+            color: white !important
         }
-        .card {
-            background-color: var(--aws-squid-ink);
-            border: 1px solid var(--aws-orange);
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .card-title {
-            color: var(--aws-orange);
-        }
-        .btn-primary {
-            background-color: var(--aws-orange);
-            border-color: var(--aws-orange);
-        }
-        .btn-primary:hover {
-            background-color: var(--aws-smile-orange);
-            border-color: var(--aws-smile-orange);
-        }
-        .social-icons a {
-            color: var(--aws-orange);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: var(--aws-smile-orange);
-        }
+        /* Navbar */
         .navbar {
-            background-color: var(--aws-deep-squid-ink);
-            position: sticky;
+            background-color: var(--aws-squid-ink);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 1000;
+            z-index: 10;
         }
         .navbar-brand, .nav-link {
-            color: var(--aws-orange) !important;
-        }
-        .navbar-nav .nav-link:hover {
             color: var(--aws-smile-orange) !important;
         }
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1.5s forwards;
-            
+        .nav-link:hover {
+            color: var(--aws-orange) !important;
+        }
+
+        /* Fullpage sections */
+        section {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Default text color */
+        }
+
+        /* Welcome Section */
+        #welcome {
+            position: relative;
+            overflow: hidden;
+            color: white; /* Text color in the Welcome section */
+        }
+
+        #welcome iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Make sure the iframe is behind other content */
+            pointer-events: none; /* Prevent interaction with the iframe */
+        }
+
+        #welcome .content {
+            position: relative; /* Ensures content is above the iframe */
+            z-index: 1;
+        }
+
+        #welcome h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        #welcome p {
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--aws-squid-ink);
+            color: var(--aws-smile-orange);
         }
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            border: 3px solid var(--aws-deep-squid-ink);
+        }
+        #about h2 {
+            margin-bottom: 2rem;
+            color: var(--aws-orange);
+        }
+
+        #about .about-icons {
+            font-size: 4rem;
+            color: var(--aws-orange);
             margin-bottom: 1rem;
         }
-        #img-center{
-            margin-left: 35%;
+        #about p{
+            color: white;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: var(--aws-deep-squid-ink);
+            color: var(--aws-smile-orange);
+        }
+
+        #projects h2 {
+            margin-bottom: 2rem;
+            color: var(--aws-orange);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+            background-color: var(--aws-squid-ink);
+            color: var(--aws-smile-orange);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--aws-orange);
+            border-color: var(--aws-orange);
+            color: var(--aws-deep-squid-ink);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--aws-smile-orange);
+            border-color: var(--aws-smile-orange);
+            color: var(--aws-squid-ink);
+        }
+
+        /* Contact Section */
+        #contact .social-icons {
+            font-size: 2rem;
+            margin: 1rem;
+            color: var(--aws-orange);
+            transition: 0.3s;
+        }
+
+        #contact .social-icons:hover {
+            color: white;
+        }
+
+        footer {
+            background-color: var(--aws-deep-squid-ink);
+            color: var(--aws-orange);
+            padding: 1rem 0;
+            text-align: center;
+        }
+        #contact {
+            position: relative;
+            color: var(--aws-orange);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #contact .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #contact .video-background iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
         }
 
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 2;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Portfolio</a>
-            <button id="bid" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron text-center fade-in" id="lighter-color">
-        <h1 class="display-4">Rimthaweep Thaweechokleartchaikul</h1>
-        <img src="https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/326970587_964513894525457_7911217388460705485_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEQJMCMuASfVxki_B5N5NKTwuN4QhPb1n3C43hCE9vWfVygAcRsu0fJ50OYiUt-JVLeRWEggd8cAbjxln_G1L3b&_nc_ohc=o5OB1XK2H4gQ7kNvgGa5d81&_nc_ht=scontent.fbkk28-1.fna&oh=00_AYD1lYiGAKis-ldNc3wjvXpEZaXwwfoZcsONBxooVlSh4w&oe=66E8DFF3" class="profile-img" text-center alt="Profile Picture">
-        <p class="lead">My Portfolio</p>
-        
-    </div>
+    <!-- Welcome Section -->
+    <section id="welcome">
+        <iframe src="https://www.youtube.com/embed/h6fcK_fRYaI?autoplay=1&mute=1&loop=1&controls=0&disablekb=1&modestbranding=1&showinfo=0&fs=0&playsinline=1" 
+        frameborder="0" 
+        allow="autoplay; fullscreen" 
+        allowfullscreen>
+        </iframe>
 
+
+        <div class="content">
+            <h1>Rimthaweep Thaweechokleartchaikul</h1>
+            <p>Explore my work and projects</p>
+        </div>
+    </section>
+    
     <!-- About Section -->
- 
-    <div class="container" class="img-center">
-        <section id="about" class="mb-5 fade-in">
-            <h2 class="text-center mb-4">About Me</h2>
+     
+    <section id="about">
+        <div class="container text-center">
+            <div class="jumbotron text-center fade-in" id="lighter-color">
+                <h1 class="display-4">Rimthaweep Thaweechokleartchaikul</h1>
+                <img src="https://scontent.fbkk28-1.fna.fbcdn.net/v/t39.30808-6/326970587_964513894525457_7911217388460705485_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEQJMCMuASfVxki_B5N5NKTwuN4QhPb1n3C43hCE9vWfVygAcRsu0fJ50OYiUt-JVLeRWEggd8cAbjxln_G1L3b&_nc_ohc=o5OB1XK2H4gQ7kNvgGa5d81&_nc_ht=scontent.fbkk28-1.fna&oh=00_AYD1lYiGAKis-ldNc3wjvXpEZaXwwfoZcsONBxooVlSh4w&oe=66E8DFF3" class="profile-img" text-center alt="Profile Picture">
+                
+            </div>
+            <h2>About Me</h2>
             <p>My name is Rimthaweep I'm now study at KMITL university now I'm a Data Engineer at Index Livingmall co. specializing in AWS technologies like Glue, DMS, PySpark, and S3. I excel at designing and optimizing ETL processes, managing data pipelines, and ensuring seamless data integration and migration. My expertise lies in transforming raw data into actionable insights and optimizing storage solutions. Passionate about solving data challenges and staying ahead of industry trends, I’m committed to delivering high-quality, reliable solutions. Let's connect and explore how we can leverage data for impactful outcomes!</p>
-        </section>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>AWS Glue</h4>
+                    <p id="white">Create an ETL tool to migrate databases from different database engines and automate the process daily.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>S3 bucket management</h4>
+                    <p id="white">Proficient at using S3 services, automating folder creation and deletion via Python's Boto3 library, and managing file transfers across regions.</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>DMS</h4>
+                    <p id="white">With AWS DMS, I seamlessly migrate and synchronize databases across diverse environments, ensuring minimal downtime and smooth transitions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="mb-5 fade-in">
-            <h2 class="text-center mb-4">My Projects</h2>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center">My Projects</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
+                        <img src="https://miro.medium.com/v2/resize:fit:875/0*lGCQi1FN5KZWrsGi.png" class="card-img-top" alt="Project One">
                         <div class="card-body">
-                            <h5 class="card-title">AWS Glue</h5>
-                            <p class="card-text">Create an ETL tool to migrate databases from different database engines and automate the process daily.</p>
-                            <a href="https://aws.amazon.com/glue/" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">Project One</h5>
+                            <p class="card-text">Design dataflow from on premise database into tier based pipelines via AWS glue</p>
+                            <a href="https://awstip.com/understanding-getsink-method-of-aws-glue-6b925855a278" target="_blank" class="btn btn-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
+                        <img src="https://miro.medium.com/v2/resize:fit:1200/1*Qz8qHl2TEWNK_1rmPZ-t-A.png" class="card-img-top" alt="Project Two">
                         <div class="card-body">
-                            <h5 class="card-title">S3 bucket management</h5>
-                            <p class="card-text">Proficient at using S3 services, automating folder creation and deletion via Python's Boto3 library, and managing file transfers across regions.</p>
-                            <a href="https://aws.amazon.com/s3/" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">Project Two</h5>
+                            <p class="card-text">Auto delete S3 files system via boto3 library by using glue notebook</p>
+                            <a href="https://blog.stackademic.com/beginners-guide-to-amazon-s3-supercharge-your-cloud-storage-skills-1ccc9dbbb23" target="_blank" class="btn btn-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card">
+                        <img src="https://miro.medium.com/v2/resize:fit:1200/1*rUUJdOUmInl-lXPq2hO4jA.jpeg" class="card-img-top" alt="Project Three">
                         <div class="card-body">
-                            <h5 class="card-title">DMS</h5>
-                            <p class="card-text">With AWS DMS, I seamlessly migrate and synchronize databases across diverse environments, ensuring minimal downtime and smooth transitions.</p>
-                            <a href="https://aws.amazon.com/dms/" class="btn btn-primary">Learn More</a>
+                            <h5 class="card-title">Project Three</h5>
+                            <p class="card-text">Write the web scraper to extract data from any webpage by searching for tag's value</p>
+                            <a href="https://blogs.cloudbuilders.io/boto3-the-python-package-for-effortless-aws-automation-18e4a8847112" target="_blank" class="btn btn-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="mb-5 fade-in">
-            <h2 class="text-center mb-4">Contact</h2>
-            <div class="social-icons text-center">
-                <a href="https://www.instagram.com/vm_im7/?hl=th" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/vie.be.7" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.youtube.com/watch?v=Zi_XLOBDo_Y" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="white-border">
+        <div class="video-background">
+            <iframe src="https://www.youtube.com/embed/8r7XOPuykbw?autoplay=1&mute=1&loop=1&playlist=8r7XOPuykbw&controls=0&disablekb=1&modestbranding=1&showinfo=0&fs=0&rel=0&end=22"  
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen>
+            </iframe>
+        </div>
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Reach out via social media or email:</p>
+            <div class="d-flex justify-content-center">
+                <a href="https://www.instagram.com/vm_im7/?hl=th" target="_blank" rel="noopener noreferrer"class="social-icons" ><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/vie.be.7" target="_blank" rel="noopener noreferrer"class="social-icons"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/watch?v=Zi_XLOBDo_Y" target="_blank" rel="noopener noreferrer"class="social-icons"><i class="fab fa-youtube"></i></a>
             </div>
-        </section>
-    </div>
+        </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-center text-white py-3">
-        <div class="container">
-            <p>© 2024 Rimthaweep Thaweechokleartchaikul. All Rights Reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 Rimthawwep Thaweechokleartchaikul</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
