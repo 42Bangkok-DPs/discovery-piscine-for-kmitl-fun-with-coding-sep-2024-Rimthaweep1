@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+    body{
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .balloon{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-radius: 100%;
+    }
+</style
+    </style>
+</head>
+<body>
+    <div class="balloon"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+$(document).ready(function() {
+    const colors = ['red', 'green', 'blue'];
+    const colors2 = ['blue', 'green', 'red'];
+    let colorIndex = 0;
+    let size = 200;
+
+    $('.balloon').click(function() {
+        size += 10;
+        if (size > 420) {
+            size = 200;
+        }
+
+        $(this).css({
+            width: size + 'px',
+            height: size + 'px',
+            backgroundColor: colors[colorIndex]
+        });
+
+        colorIndex = (colorIndex + 1) % colors.length;
+    });
+
+    $('.balloon').mouseenter(function() {
+        if (size !== 200) {
+            // Decrease size by 5 pixels when mouse enters
+            size -= 5;
+            if (size < 200) {
+                size = 200; // Optional: prevent the size from becoming too small
+            }
+
+            $(this).css({
+                width: size + 'px',
+                height: size + 'px',
+                backgroundColor: colors2[colorIndex]
+                
+            });
+        }colorIndex = (colorIndex + 1) % colors2.length;
+    });
+
+    $('.balloon').mouseleave(function() {
+        if (size !== 200) {
+            // Decrease size by 5 pixels when mouse leaves
+            size -= 5;
+            if (size < 200) {
+                size = 200; // Optional: prevent the size from becoming too small
+            }
+
+            $(this).css({
+                width: size + 'px',
+                height: size + 'px',
+                backgroundColor: colors2[colorIndex]
+            });
+        }colorIndex = (colorIndex + 1) % colors2.length;
+    });
+});
+
+    </script>
+</body>
+</html>

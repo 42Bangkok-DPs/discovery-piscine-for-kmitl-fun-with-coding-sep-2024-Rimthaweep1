@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <input type="number" id="number_1" min="0">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="number" id="number_2" min="0">
+    <button id="calculateButton" onclick="resettime();">Try me!</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#calculateButton').click(function () {
+                const number_1 = parseInt($('#number_1').val());
+                const number_2 = parseInt($('#number_2').val());
+                const operator = $('#operator').val();
+
+                if (number_1 < 0 || number_2 < 0) {
+                    alert('Error :(');
+                    return;
+                }
+
+                let result;
+                switch (operator) {
+                    case '+':
+                        result = number_1 + number_2;
+                        break;
+                    case '-':
+                        result = number_1 - number_2;
+                        break;
+                    case '*':
+                        result = number_1 * number_2;
+                        break;
+                    case '/':
+                        if (number_2 === 0) {
+                            alert("It's over 9000!");
+                            return;
+                        }
+                        result = number_1 / number_2;
+                        break;
+                    case '%':
+                        if (number_2 === 0) {
+                            alert("It's over 9000!");
+                            return;
+                        }
+                        result = number_1 % number_2;
+                        break;
+                }
+
+                alert('Result: ' + result);
+                console.log('Result: ' + result);
+            });
+
+            let alertInterval;
+
+            // Function to start the alert timer
+            function startTimer() {
+                alertInterval = setInterval(() => {
+                    alert('Please, use me...');
+                }, 30000); // 30 seconds
+            }
+
+            // Function to reset the timer when the button is clicked
+            function resettime() {
+                clearInterval(alertInterval); // Clear the current timer
+                startTimer(); // Restart the timer
+            }
+
+            // Start the timer when the page loads
+            startTimer();
+
+            // Reset the timer when the button is clicked
+            $('#calculateButton').on('click', function () {
+                resettime();
+            });
+        });
+    </script>
+</body>
+
+</html>
