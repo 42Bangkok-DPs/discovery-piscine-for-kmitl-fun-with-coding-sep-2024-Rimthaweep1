@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balloon</title>
-    <style>
+    <title>Explode this balloon</title>
+</head>
+<style>
     body{
         margin: 0;
         height: 100vh;
@@ -18,48 +19,38 @@
         background-color: red;
         border-radius: 100%;
     }
-</style
-    </style>
-</head>
+</style>
 <body>
     <div class="balloon"></div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            const colors = ['red', 'green', 'blue'];
-            let colorIndex = 0;
-            let size = 200;
+        const balloon = document.querySelector('.balloon');
+        const colors = ['red', 'green', 'blue']; 
+        let colorIndex = 0; 
+        let size = 200; 
 
-            $('.balloon').click(function() {
-                size += 10;
-                if (size > 420) {
-                    size = 200;
-                }
+        balloon.addEventListener('click', () => {
+            size += 10;
+            if (size > 420) {
+                size = 200;
+                
+            }
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+            colorIndex = (colorIndex + 1) % colors.length;
+            balloon.style.backgroundColor = colors[colorIndex];
+    
+        });
 
-                $(this).css({
-                    width: size + 'px',
-                    height: size + 'px',
-                    backgroundColor: colors[colorIndex]
-                });
-
-                colorIndex = (colorIndex + 1) % colors.length;
-            });
-
-            $('.balloon').mouseenter(function() {
-                $(this).mouseleave(function() {
-                    size -= 5;
-                    if (size < 200) {
-                        size = 200;
-                    }
-
-                    $(this).css({
-                        width: size + 'px',
-                        height: size + 'px',
-                        backgroundColor: colors[(colorIndex - 1 + colors.length) % colors.length]
-                    });
-                });
-            });
+        balloon.addEventListener('mouseleave', () => {
+            size -= 5;
+            if (size < 200) {
+                size = 200; 
+            }
+            balloon.style.width = `${size}px`;
+            balloon.style.height = `${size}px`;
+            colorIndex = (colorIndex - 1 + colors.length) % colors.length; 
+            balloon.style.backgroundColor = colors[colorIndex];
         });
     </script>
 </body>
